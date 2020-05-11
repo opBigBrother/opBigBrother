@@ -37,11 +37,12 @@ class censysSearch:
 |                                               |
 | (6) GoAhead               [GoAhead         ]  |
 |                                               |
-| (7) Boa                                       |
+| (8) anpr                                      |
 |                                               |
-| (8) ANPR                                      |
+| (9) mobotix                                   |
 |                                               |
-| (9) custom query                              |
+|                                               |
+| (10) custom query                             |
 |                                               |
 +-----------------------------------------------+
 '''
@@ -66,8 +67,9 @@ class censysSearch:
                 elif selection == 8:
                     query = 'WWW-Authenticate: Basic realm="Embedded-Device" and location.country_code:IT'
                 elif selection == 9:
+                    query = 'mobotix and location.country_code:IT'
+                elif selection == 10:
                     query = input('[-]Enter your custom query: ')
-                print(query)
                 for record in censys.ipv4.CensysIPv4(api_id=uid, api_secret=secret).search(query):
                     ip = record['ip']
                     port = record['protocols']
